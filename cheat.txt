@@ -1,0 +1,19 @@
+MyElectronicAccess to get access (SSO) to heroku platform
+
+ITSTORE
+DOWNLOAD Heroku CLI
+DOWNLOAD pgAdmin (to connect to Heroku Postgres database from local computer)
+Needs firewall access for port 5432 & apps/machines/private spaces which can access to it
+
+SET PATH=%PATH%;C:\Program Files\Heroku\bin;.
+SET HTTPS_PROXY=https://pgeproxyws.comp.pge.com:8080
+
+heroku login
+heroku open
+heroku logout
+
+heroku login --sso
+heroku login HEROKU_ORGANIZATION=Energyinsightpge-42 --sso
+
+Maven - v3.0.5
+JDK 1.8

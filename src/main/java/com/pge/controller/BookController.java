@@ -19,6 +19,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * {@code BookController} exposes book API.
  * <p/>
@@ -32,6 +35,7 @@ import org.springframework.stereotype.Component;
 public class BookController {
 
     private BookService service;
+	private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     public BookController(BookService service) {
@@ -49,6 +53,7 @@ public class BookController {
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 500, message = "Failure")})
     public Book create(BookRequest request) {
+		log.info("Book create to be created");
         return service.create(request);
     }
 
@@ -63,6 +68,7 @@ public class BookController {
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 500, message = "Failure")})
     public Book read(@PathParam("id") UUID id) {
+		log.info("Get book for::" + id);
         return service.read(id);
     }
 }
